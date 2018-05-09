@@ -1,4 +1,4 @@
-# 9 
+# 9 - http://www.pythonchallenge.com/pc/return/good.html
 # Hint: first+second=?
 # Title: Connect the dots 
 # Image -- good.jpg
