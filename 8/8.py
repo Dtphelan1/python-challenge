@@ -1,4 +1,4 @@
-# 8 
+# 8 - http://www.pythonchallenge.com/pc/def/integrity.html
 # Hint: Where is the missing link?
 # Hint: Click on bee 
 # <!--
@@ -15,6 +15,4 @@ pw = 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\x
 print(bz2.decompress(un.encode('latin1'))) 
 # un: huge 
 print(bz2.decompress(pw.encode('latin1')))
-# pw: file 
-
-# visitUrl("http://www.pythonchallenge.com/pc/return/good.html", noRoot)
+# pw: file x

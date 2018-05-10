@@ -1,7 +1,14 @@
+# 7 - http://www.pythonchallenge.com/pc/def/oxygen.html
+# Use PIL to get information from grey bar picture
+
 from PIL import Image
 import re 
 
-img = Image.open('oxygen.png')
+import os
+dirname = os.path.dirname(__file__)
+filePath = os.path.join(dirname, 'oxygen.png')
+
+img = Image.open(filePath)
 
 print(img.width)
 print(img.height)

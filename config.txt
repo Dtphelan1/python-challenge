@@ -1,0 +1,4 @@
+[setup]
+startPath = http://www.pythonchallenge.com/pc/def/0.html
+rootPath = http://www.pythonchallenge.com/pc/def/
+pageType = .html
