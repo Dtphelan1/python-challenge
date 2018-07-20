@@ -6,8 +6,11 @@
 # Hint: <!-- maybe consider deltas.gz -->
 # Download at: http://www.pythonchallenge.com/pc/return/deltas.gz
 
+import bz2
+import difflib
+import gzip
 import os
-import gzip, bz2, difflib
+import re
 
 dirname = os.path.dirname(__file__)
 filePath = os.path.join(dirname, 'deltas.gz')
@@ -17,10 +20,37 @@ print(dir(f))
 # print(f.read().decode())
 arr1, arr2 = [], []
 for line in f: 
-    print(line)
-    # arr1.append(line[])
     # Let's separate those two different columns of data 
-    ind = line.index(b'  ')
-    # print(ind)
-    arr1.append(line[:ind].decode()+"\n")
-    arr1.append(line[ind + 2 + 1:].decode())
+    # end of first col
+    indOfFirstEnd = 53
+    # start of second
+    indOfSecondStart = indOfFirstEnd + 3;
+    arr1.append(line[:indOfFirstEnd].decode()+"\n")
+    arr2.append(line[indOfSecondStart:].decode())
+
+compare = difflib.Differ().compare(arr1, arr2)
+
+# some files for the diffs 
+same = open(os.path.join(dirname, "same.png"), "wb")
+additions = open(os.path.join(dirname, "additions.png"), "wb")
+deletions = open(os.path.join(dirname, "deletions.png"), "wb")
+
+for line in compare: 
+    print(line)
+    # get the bytes
+    bs = bytes([int(o, 16) for o in line[2:].strip().split(" ") if o])
+    if line[0] == "+":
+        same.write(bs)
+    elif line[0] == "-":
+        additions.write(bs)
+    else:
+        deletions.write(bs)
+# word: butter
+same.close()
+# word: fly
+additions.close()
+# "../hex/bin.html"
+deletions.close()
+# 19 - http://www.pythonchallenge.com/pc/hex/bin.html
+# U:butter
+# P:fly
